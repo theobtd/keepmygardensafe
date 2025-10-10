@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Risque Ravageurs Tomates</title>
+    <title>Tomato - Risk</title>
 
     <!-- 100% privacy-first analytics -->
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
@@ -160,8 +160,8 @@
 <body>
 
     <div class="button-container">
-        <button class="map-button" id="carteButton">Carte</button>
-        <button class="map-button" id="monPotagerButton">Mon Potager</button>
+        <button class="map-button" id="carteButton">Map</button>
+        <button class="map-button" id="monPotagerButton">My Garden</button>
     </div>
     
     <div class="map-container" id="mapContainer">
@@ -188,7 +188,7 @@
     </div>
 
     <div class="info-container" id="infoContainer">
-        <h2>Cliquez sur une région pour la sélectionner</h2>
+        <h2>Click on a region to view details</h2>
         <div id="loadingInfo" class="loading-overlay" style="display: none;">
             <div class="loader"></div>
         </div>
@@ -204,12 +204,12 @@
             Aleurodes <button class="info-button" onclick="showHelloWorld('Aleurodes')">?</button>:
         </div>
         <div class="email-container" style="margin-top: 20px;">
-            <p style="font-size: 0.9em; color: #555;">Je m'abonne pour recevoir un rappel mensuel (et rien d'autre).</p>
-            <input type="email" id="emailInput" placeholder="Entrez votre email" required>
-            <button id="submitEmailButton" class="map-button" style="margin-left: 10px;">Valider</button>
+            <p style="font-size: 0.9em; color: #555;">Sign up to receive monthly reminders (and nothing else).</p>
+            <input type="email" id="emailInput" placeholder="Enter votre email" required>
+            <button id="submitEmailButton" class="map-button" style="margin-left: 10px;">Confirm</button>
             <div id="emailMessage" style="color: red; margin-top: 5px;"></div>
         </div>
-        <div class="info-footer">Les prévisions santepotager.fr sont indicatives et leur exactitude n'est pas garantie. L'utilisateur reste entièrement responsable de ses décisions.</div>
+        <div class="info-footer">The forecasts from keepmygardensafe.com are indicative and their accuracy is not guaranteed. The user remains fully responsible for their decisions.</div>
     </div>
 
     <script>
@@ -552,26 +552,26 @@
             // Update mapContainer with input fields and button
             document.getElementById('mapContainer').innerHTML = `
                 <div>
-                    <h2>Indiquez la localisation de votre potager</h2>
+                    <h2>Indicate the location of your garden</h2>
                     <label for="latitude">Latitude (ex: 43.9462):</label>
-                    <input type="text" id="latitude" placeholder="Entrez votre latitude">
+                    <input type="text" id="latitude" placeholder="Enter your latitude">
                     <br>
                     <label for="longitude">Longitude (ex: 5.0512):</label>
-                    <input type="text" id="longitude" placeholder="Entrez votre longitude">
+                    <input type="text" id="longitude" placeholder="Enter your longitude">
                     <br>
-                    <button id="getLocationButton" style="margin-top: 10px;">Me géolocaliser</button>
+                    <button id="getLocationButton" style="margin-top: 10px;">Locate Me</button>
                     <br>
-                    <div style="text-align: center; margin: 10px 0;">ou</div>
+                    <div style="text-align: center; margin: 10px 0;">or</div>
                     <label for="postalCode">Code Postal:</label>
-                    <input type="text" id="postalCode" placeholder="Entrez votre code postal">
+                    <input type="text" id="postalCode" placeholder="Enter your postal code">
                     <br>
-                    <button id="letsGoButton" style="margin-top: 3vh;">Calculer Risque</button>
+                    <button id="letsGoButton" style="margin-top: 3vh;">Calculate Risk</button>
                     <div id="errorMessage" style="color: red;"></div>
                 </div>
             `;
 
             // Change the title in the info-container
-            document.querySelector('#infoContainer h2').textContent = "Risque pour votre potager";
+            document.querySelector('#infoContainer h2').textContent = "Risk for your garden";
 
             // Reset the infoMessage content to just the titles
             const titles = [

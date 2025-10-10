@@ -249,7 +249,7 @@
 
         // NEW: Call Vercel function (SECURE) to retrieve weather data
         async function getWeatherData(lat, lon) {
-          const vercelUrl = "https://omniscius.vercel.app/api/weather";
+          const vercelUrl = "https://keepmygardensafe.vercel.app/api/weather";
           const response = await fetch(`${vercelUrl}?lat=${lat}&lon=${lon}&regionName=custom`);
           if (!response.ok) throw new Error("Failed to fetch weather data");
           const data = await response.json();
@@ -257,7 +257,7 @@
         }
 
         async function getCoordinatesFromPostalCode(postalCode) {
-          const vercelUrl = "https://omniscius.vercel.app/api/geocode";
+          const vercelUrl = "https://keepmygardensafe.vercel.app/api/geocode";
           const response = await fetch(`${vercelUrl}?postalCode=${postalCode}`);
           if (!response.ok) throw new Error("Failed to fetch coordinates");
           return await response.json();
@@ -461,12 +461,12 @@
           }
           // Map pest names to image URLs
           const pestImageUrls = {
-              "Tuta Absoluta": "https://raw.githubusercontent.com/theobtd/omniscius/main/images/TutaAbsoluta.jpg",
-              "Botrytis": "https://raw.githubusercontent.com/theobtd/omniscius/main/images/Botrytis.gif",
-              "Puceron Cendré": "https://raw.githubusercontent.com/theobtd/omniscius/main/images/PuceronCendre.JPG",
-              "Punaise Nesidiocoris": "https://raw.githubusercontent.com/theobtd/omniscius/main/images/PunaiseNesidiocoris.jpeg",
-              "Acariose Bronzée": "https://raw.githubusercontent.com/theobtd/omniscius/main/images/AcarioseBronzee.jpeg",
-              "Aleurodes": "https://raw.githubusercontent.com/theobtd/omniscius/main/images/Aleurodes.jpeg"
+              "Tuta Absoluta": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/TutaAbsoluta.jpg",
+              "Botrytis": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/Botrytis.gif",
+              "Puceron Cendré": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/PuceronCendre.JPG",
+              "Punaise Nesidiocoris": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/PunaiseNesidiocoris.jpeg",
+              "Acariose Bronzée": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/AcarioseBronzee.jpeg",
+              "Aleurodes": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/Aleurodes.jpeg"
           };
           // Get the image URL for the current pest
           const imageUrl = pestImageUrls[pestName] || "";
@@ -697,7 +697,7 @@
                         document.getElementById('infoMessage').innerHTML = riskMessage;
 
                         // Update the UserCount via Vercel function (instead of direct Firebase write)
-                        const incrementResponse = await fetch("https://omniscius.vercel.app/api/incrementUserCount", {
+                        const incrementResponse = await fetch("https://keepmygardensafe.vercel.app/api/incrementUserCount", {
                           method: "POST",
                           headers: {
                             "Content-Type": "application/json",

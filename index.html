@@ -350,9 +350,9 @@
         
                 // Mapping for risk levels
                 const riskMapping = {
-                    "normal": "normal - pas de facteurs de risque particuliers",
-                    "high": "élevé - situation à surveiller",
-                    "unknown": "inconnu" // Optional: handle unknown case
+                    "normal": "normal - no particular risk factor",
+                    "high": "high - pay particular attention",
+                    "unknown": "unknown" // Optional: handle unknown case
                 };
         
                 // Translate risks
@@ -385,7 +385,7 @@
             const nPlus5Date = formatDate(5);
             const nPlus12Date = formatDate(12);
             const titleElementMap = document.querySelector('.map-container h2'); // Title in mapContainer
-            titleElementMap.textContent = `Risque Tomate - ${nPlus5Date} to ${nPlus12Date}`;
+            titleElementMap.textContent = `Tomato Risk - ${nPlus5Date} to ${nPlus12Date}`;
             
             // Set initial title in info-container
             const titleElementInfo = document.querySelector('#infoContainer h2'); // Title in infoContainer

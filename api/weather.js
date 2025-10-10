@@ -18,7 +18,7 @@ const database = getDatabase(app);
 
 export default async function handler(req, res) {
   // Enable CORS for your domain
-  res.setHeader("Access-Control-Allow-Origin", "https://theobtd.github.io/keepmygardensafe/");
+  res.setHeader("Access-Control-Allow-Origin", "https://theobtd.github.io");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 

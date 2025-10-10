@@ -448,14 +448,14 @@
           // Change the title to the pest name
           document.querySelector('#infoContainer h2').innerHTML = `
               ${pestName}
-              <button class="map-button" onclick="returnToSavedInfo()" style="margin-left: 10px; font-size: 0.8em; padding: 5px 10px;">Retour</button>
+              <button class="map-button" onclick="returnToSavedInfo()" style="margin-left: 10px; font-size: 0.8em; padding: 5px 10px;">Return</button>
           `;
           // Get the definition for the pest
           const pestInfo = pestDefinitions[pestName];
           if (!pestInfo) {
             document.getElementById('infoMessage').innerHTML = `
               <p>Désolé, aucune définition disponible pour ce ravageur.</p>
-              <button class="map-button" onclick="returnToSavedInfo()">Retour</button>
+              <button class="map-button" onclick="returnToSavedInfo()">Return</button>
             `;
             return;
           }
@@ -483,7 +483,7 @@
             <p>${pestInfo.prevention || "Aucune méthode de prévention disponible."}</p>
             <h3>Traitement</h3>
             <p>${pestInfo.treatment || "Aucun traitement disponible."}</p>
-            <button class="map-button" onclick="returnToSavedInfo()">Retour</button>
+            <button class="map-button" onclick="returnToSavedInfo()">Return</button>
           `;
           // Replace with the full info and a Return button
           document.getElementById('infoMessage').innerHTML = infoHTML;

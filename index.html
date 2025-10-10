@@ -196,12 +196,12 @@
             <div id="loadingInfo" class="loading-overlay" style="display: none;">
                 <div class="loader"></div>
             </div>
-            Mineuse de la Tomate (<i>Tuta Absoluta</i>) <button class="info-button" onclick="showHelloWorld('Tuta Absoluta')">?</button>:<br>
-            Pourriture Grise (<i>Botrytis</i>) <button class="info-button" onclick="showHelloWorld('Botrytis')">?</button>:<br>
-            Puceron Cendré <button class="info-button" onclick="showHelloWorld('Puceron Cendré')">?</button>:<br>
-            Punaise Nesidiocoris <button class="info-button" onclick="showHelloWorld('Punaise Nesidiocoris')">?</button>:<br>
-            Acariose Bronzée (<i>Aculops lycopersici </i>) <button class="info-button" onclick="showHelloWorld('Acariose Bronzée')">?</button>:<br>
-            Aleurodes <button class="info-button" onclick="showHelloWorld('Aleurodes')">?</button>:
+            Tomato Leaf Miner (<i>Tuta Absoluta</i>) <button class="info-button" onclick="showHelloWorld('Tuta Absoluta')">?</button>:<br>
+            Grey Mold (<i>Botrytis</i>) <button class="info-button" onclick="showHelloWorld('Botrytis')">?</button>:<br>
+            Ashy Leaf Curl Aphid <button class="info-button" onclick="showHelloWorld('Ashy Leaf Curl Aphid')">?</button>:<br>
+            Nesidiocoris Bug <button class="info-button" onclick="showHelloWorld('Nesidiocoris Bug')">?</button>:<br>
+            Russet Mite (<i>Aculops lycopersici </i>) <button class="info-button" onclick="showHelloWorld('Russet Mite')">?</button>:<br>
+            Whiteflies <button class="info-button" onclick="showHelloWorld('Whiteflies')">?</button>:
         </div>
         <div class="email-container" style="margin-top: 20px;">
             <p style="font-size: 0.9em; color: #555;">Sign up to receive monthly reminders (and nothing else).</p>
@@ -346,7 +346,7 @@
                 const puceroncendreRisk = await database.ref(`PuceronCendre/${regionName}`).once('value').then(snapshot => snapshot.val());
                 const punaisenesidiocorisRisk = await database.ref(`PunaiseNesidiocoris/${regionName}`).once('value').then(snapshot => snapshot.val());
                 const acariosebronzeeRisk = await database.ref(`AcarioseBronzee/${regionName}`).once('value').then(snapshot => snapshot.val());
-                const aleurodesRisk = await database.ref(`Aleurodes/${regionName}`).once('value').then(snapshot => snapshot.val());
+                const WhitefliesRisk = await database.ref(`Whiteflies/${regionName}`).once('value').then(snapshot => snapshot.val());
         
                 // Mapping for risk levels
                 const riskMapping = {
@@ -362,7 +362,7 @@
                     puceroncendreRisk: riskMapping[puceroncendreRisk] || puceroncendreRisk,
                     punaisenesidiocorisRisk: riskMapping[punaisenesidiocorisRisk] || punaisenesidiocorisRisk,
                     acariosebronzeeRisk: riskMapping[acariosebronzeeRisk] || acariosebronzeeRisk,
-                    aleurodesRisk: riskMapping[aleurodesRisk] || aleurodesRisk
+                    WhitefliesRisk: riskMapping[WhitefliesRisk] || WhitefliesRisk
                 };
             } catch (error) {
                 console.error(`Error fetching risk levels for ${regionName}:`, error);
@@ -372,7 +372,7 @@
                     puceroncendreRisk: "inconnu",
                     punaisenesidiocorisRisk: "inconnu",
                     acariosebronzeeRisk: "inconnu",
-                    aleurodesRisk: "inconnu"
+                    WhitefliesRisk: "inconnu"
                 };
             }
         }
@@ -404,19 +404,19 @@
                     // Show loader
                     document.getElementById('loadingInfo').style.display = 'flex';
                     
-                    const { tutaRisk, botrytisRisk, puceroncendreRisk, punaisenesidiocorisRisk, acariosebronzeeRisk, aleurodesRisk } = await fetchRiskLevelsForRegion(regionName);
+                    const { tutaRisk, botrytisRisk, puceroncendreRisk, punaisenesidiocorisRisk, acariosebronzeeRisk, WhitefliesRisk } = await fetchRiskLevelsForRegion(regionName);
                     
                     // Hide loader
                     document.getElementById('loadingInfo').style.display = 'none';
                     
                     // For fetchRiskLevelsForRegion
                     const infoMessage = `
-                        Mineuse de la Tomate (<i>Tuta Absoluta</i>) <button class="info-button" onclick="showHelloWorld('Tuta Absoluta')">?</button>: ${tutaRisk}<br>
-                        Pourriture Grise (<i>Botrytis</i>) <button class="info-button" onclick="showHelloWorld('Botrytis')">?</button>: ${botrytisRisk}<br>
-                        Puceron Cendré <button class="info-button" onclick="showHelloWorld('Puceron Cendré')">?</button>: ${puceroncendreRisk}<br>
-                        Punaise Nesidiocoris <button class="info-button" onclick="showHelloWorld('Punaise Nesidiocoris')">?</button>: ${punaisenesidiocorisRisk}<br>
-                        Acariose Bronzée (<i>Aculops lycopersici </i>) <button class="info-button" onclick="showHelloWorld('Acariose Bronzée')">?</button>: ${acariosebronzeeRisk}<br>
-                        Aleurodes <button class="info-button" onclick="showHelloWorld('Aleurodes')">?</button>: ${aleurodesRisk}
+                        Tomato Leaf Miner (<i>Tuta Absoluta</i>) <button class="info-button" onclick="showHelloWorld('Tuta Absoluta')">?</button>: ${tutaRisk}<br>
+                        Grey Mold (<i>Botrytis</i>) <button class="info-button" onclick="showHelloWorld('Botrytis')">?</button>: ${botrytisRisk}<br>
+                        Ashy Leaf Curl Aphid <button class="info-button" onclick="showHelloWorld('Ashy Leaf Curl Aphid')">?</button>: ${puceroncendreRisk}<br>
+                        Nesidiocoris Bug <button class="info-button" onclick="showHelloWorld('Nesidiocoris Bug')">?</button>: ${punaisenesidiocorisRisk}<br>
+                        Russet Mite (<i>Aculops lycopersici </i>) <button class="info-button" onclick="showHelloWorld('Russet Mite')">?</button>: ${acariosebronzeeRisk}<br>
+                        Whiteflies <button class="info-button" onclick="showHelloWorld('Whiteflies')">?</button>: ${WhitefliesRisk}
                     `;
                     
                     document.getElementById('infoMessage').innerHTML = infoMessage; // Update info div
@@ -463,10 +463,10 @@
           const pestImageUrls = {
               "Tuta Absoluta": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/TutaAbsoluta.jpg",
               "Botrytis": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/Botrytis.gif",
-              "Puceron Cendré": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/PuceronCendre.JPG",
-              "Punaise Nesidiocoris": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/PunaiseNesidiocoris.jpeg",
-              "Acariose Bronzée": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/AcarioseBronzee.jpeg",
-              "Aleurodes": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/Aleurodes.jpeg"
+              "Ashy Leaf Curl Aphid": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/PuceronCendre.JPG",
+              "Nesidiocoris Bug": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/PunaiseNesidiocoris.jpeg",
+              "Russet Mite": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/AcarioseBronzee.jpeg",
+              "Whiteflies": "https://raw.githubusercontent.com/theobtd/keepmygardensafe/main/images/Whiteflies.jpeg"
           };
           // Get the image URL for the current pest
           const imageUrl = pestImageUrls[pestName] || "";
@@ -536,12 +536,12 @@
 
             // Reset the infoMessage content to just the titles
             const titles = [
-                "Mineuse de la Tomate (<i>Tuta Absoluta</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Tuta Absoluta')\">?</button>:",
-                "Pourriture Grise (<i>Botrytis</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Botrytis')\">?</button>:",
-                "Puceron Cendré <button class=\"info-button\" onclick=\"showHelloWorld('Puceron Cendré')\">?</button>:",
-                "Punaise Nesidiocoris <button class=\"info-button\" onclick=\"showHelloWorld('Punaise Nesidiocoris')\">?</button>:",
-                "Acariose Bronzée (<i>Aculops lycopersici</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Acariose Bronzée')\">?</button>:",
-                "Aleurodes <button class=\"info-button\" onclick=\"showHelloWorld('Aleurodes')\">?</button>:"
+                "Tomato Leaf Miner (<i>Tuta Absoluta</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Tuta Absoluta')\">?</button>:",
+                "Grey Mold (<i>Botrytis</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Botrytis')\">?</button>:",
+                "Ashy Leaf Curl Aphid <button class=\"info-button\" onclick=\"showHelloWorld('Ashy Leaf Curl Aphid')\">?</button>:",
+                "Nesidiocoris Bug <button class=\"info-button\" onclick=\"showHelloWorld('Nesidiocoris Bug')\">?</button>:",
+                "Russet Mite (<i>Aculops lycopersici</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Russet Mite')\">?</button>:",
+                "Whiteflies <button class=\"info-button\" onclick=\"showHelloWorld('Whiteflies')\">?</button>:"
             ];
             document.getElementById('infoMessage').innerHTML = titles.join('<br>') + '<br>';
             
@@ -575,12 +575,12 @@
 
             // Reset the infoMessage content to just the titles
             const titles = [
-                "Mineuse de la Tomate (<i>Tuta Absoluta</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Tuta Absoluta')\">?</button>:",
-                "Pourriture Grise (<i>Botrytis</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Botrytis')\">?</button>:",
-                "Puceron Cendré <button class=\"info-button\" onclick=\"showHelloWorld('Puceron Cendré')\">?</button>:",
-                "Punaise Nesidiocoris <button class=\"info-button\" onclick=\"showHelloWorld('Punaise Nesidiocoris')\">?</button>:",
-                "Acariose Bronzée (<i>Aculops lycopersici</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Acariose Bronzée')\">?</button>:",
-                "Aleurodes <button class=\"info-button\" onclick=\"showHelloWorld('Aleurodes')\">?</button>:"
+                "Tomato Leaf Miner (<i>Tuta Absoluta</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Tuta Absoluta')\">?</button>:",
+                "Grey Mold (<i>Botrytis</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Botrytis')\">?</button>:",
+                "Ashy Leaf Curl Aphid <button class=\"info-button\" onclick=\"showHelloWorld('Ashy Leaf Curl Aphid')\">?</button>:",
+                "Nesidiocoris Bug <button class=\"info-button\" onclick=\"showHelloWorld('Nesidiocoris Bug')\">?</button>:",
+                "Russet Mite (<i>Aculops lycopersici</i>) <button class=\"info-button\" onclick=\"showHelloWorld('Russet Mite')\">?</button>:",
+                "Whiteflies <button class=\"info-button\" onclick=\"showHelloWorld('Whiteflies')\">?</button>:"
             ];
             document.getElementById('infoMessage').innerHTML = titles.join('<br>') + '<br>';
 
@@ -670,10 +670,10 @@
                         const endpoints = {
                             "Tuta Absoluta": "https://theoagri.pythonanywhere.com/predict",
                             "Botrytis": "https://theoagri.pythonanywhere.com/predict_botrytis",
-                            "Puceron Cendré": "https://theoagri.pythonanywhere.com/predict_puceroncendre",
-                            "Punaise Nesidiocoris": "https://theoagri.pythonanywhere.com/predict_punaisenesidiocoris",
-                            "Acariose Bronzée": "https://theoagri.pythonanywhere.com/predict_acariosebronzee",
-                            "Aleurodes": "https://theoagri.pythonanywhere.com/predict_aleurodes"
+                            "Ashy Leaf Curl Aphid": "https://theoagri.pythonanywhere.com/predict_puceroncendre",
+                            "Nesidiocoris Bug": "https://theoagri.pythonanywhere.com/predict_punaisenesidiocoris",
+                            "Russet Mite": "https://theoagri.pythonanywhere.com/predict_acariosebronzee",
+                            "Whiteflies": "https://theoagri.pythonanywhere.com/predict_Whiteflies"
                         };
             
                         // Prepare a message to display risk levels
